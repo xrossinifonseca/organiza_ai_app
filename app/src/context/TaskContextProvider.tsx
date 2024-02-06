@@ -1,15 +1,26 @@
-import { ReactNode, createContext, useContext } from 'react';
+import { ReactNode, createContext, useContext, useState } from 'react';
 
-interface TaskContextProvider {}
+interface TaskContextProps {
+  openModalCreate: boolean;
+  openCreateTask: () => void;
+}
 
-const Context = createContext<TaskContextProvider>({});
+const Context = createContext<TaskContextProps>({} as TaskContextProps);
 
 type Props = {
   children: ReactNode;
 };
 
 export const TaskContextProvider = ({ children }: Props) => {
-  return <Context.Provider value={{}}>{children}</Context.Provider>;
+  const [openModalCreate, setOpenModalCreate] = useState<boolean>(false);
+
+  const openCreateTask = () => {
+    setOpenModalCreate((e) => !e);
+  };
+
+  return (
+    <Context.Provider value={{ openModalCreate, openCreateTask }}>{children}</Context.Provider>
+  );
 };
 
 export const useTaskContext = () => useContext(Context);

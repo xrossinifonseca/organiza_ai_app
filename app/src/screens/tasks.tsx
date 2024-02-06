@@ -4,17 +4,11 @@ import Task from '~/components/task/Task';
 import NoTask from '~/components/task/NoTask';
 
 import Create from '~/components/task/Create';
-import { TaskContextProvider } from '~/context/TaskContextProvider';
+import { TaskContextProvider, useTaskContext } from '~/context/TaskContextProvider';
 import { Feather } from '@expo/vector-icons';
-
-export interface TaskList {
-  id: number;
-  name: string;
-}
+import TaskList from '~/components/task/TaskList';
 
 export default function Tasks() {
-  const tasks: TaskList[] = [];
-
   return (
     <TaskContextProvider>
       <View className="jutify-start relative h-full">
@@ -31,22 +25,7 @@ export default function Tasks() {
           </View>
         </View>
 
-        <View className="h-full p-2 gap-2 flex-1 mt-2 mb-2">
-          {tasks.length > 0 ? (
-            <View>
-              <Text className="text-secundary text-xl font-medium">Hoje</Text>
-              <ScrollView>
-                <View className="gap-2">
-                  {tasks.map((task) => (
-                    <Task key={task.id} task={task} />
-                  ))}
-                </View>
-              </ScrollView>
-            </View>
-          ) : (
-            <NoTask />
-          )}
-        </View>
+        <TaskList />
 
         <View className="absolute h-full">
           <Create />

@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "acao_cota_plus",
+    "slug": "acao_cota_plus",
+    "version": "1.0.0",
+
+    "web": {},
+
+    "experiments": {
+      "tsconfigPaths": true
+    },
+
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      }
+    }
+  }
+}
